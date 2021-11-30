@@ -1,18 +1,31 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+
+    <input id="text" value="copy me" />
+
+    <!-- Trigger -->
+    <button class="btn" data-clipboard-action="copy" data-clipboard-target="#text">Copy to clipboard</button>
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import ClipboardJS from "clipboard";
 
 export default {
+  data: function () {
+    return {};
+  },
   name: "Home",
-  components: {
-    HelloWorld,
+  components: {},
+  mounted: function () {
+    this.setUpClipboard();
+  },
+  methods: {
+    setUpClipboard: function () {
+      const button = new ClipboardJS(".btn");
+      console.log(button);
+    },
   },
 };
 </script>
